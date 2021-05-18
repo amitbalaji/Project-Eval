@@ -8,6 +8,8 @@ import { AuthserviceService } from '../authservice.service';
 })
 export class DashboardComponent implements OnInit {
  public userLogged: string;
+ customerFromUser;
+  customer: string;
   constructor(private auth: AuthserviceService) {
     if(this.auth.isAdmin)[
       this.userLogged = this.auth.username
@@ -15,6 +17,8 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
+     this.customerFromUser = this.auth.customerFromObject[0];
+     this.customer = this.auth.customerNormalFromService;
   }
 
 

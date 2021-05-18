@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthserviceService } from '../authservice.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthserviceService } from '../authservice.service';
 export class LoginComponent implements OnInit {
   public myform :FormGroup; 
   
-  constructor(private fb: FormBuilder, private _authSer: AuthserviceService) { }
+  constructor(private fb: FormBuilder, private _authSer: AuthserviceService,private router: Router) { }
 
   ngOnInit(): void {
     this.myform = this.fb.group({
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit(event:any){
     this._authSer.isLoginedAdmin(event.value.username, event.value.password);
+    if(this._authSer.isLoginedAdmin){
+      this.router.navigate(['contact'])
+    }
   }
 
 }
