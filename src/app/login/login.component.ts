@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   onSubmit(event:any){
     this._authSer.isLoginedAdmin(event.value.username, event.value.password);
     if(this._authSer.isLoginedAdmin){
-      this.router.navigate(['contact'])
+      this.router.navigate(['home'])
     }
   }
 
